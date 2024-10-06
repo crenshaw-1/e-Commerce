@@ -67,7 +67,7 @@ The server will start running at `http://localhost:5000` (or whatever PORT you'v
 
 ## API Documentation
 
-You can find the full API documentation in the [Postman collection](link_to_your_postman_collection). Import this collection into Postman to see all available endpoints and example requests.
+You can find the full API documentation in the [Postman collection](https://www.postman.com/lively-astronaut-205681/workspace/all-view/collection/20977038-b534712b-cc00-4cc5-93a1-d63de6ade89c?action=share&creator=20977038). Import this collection into Postman to see all available endpoints and example requests.
 
 Here are some of the main endpoints:
 
