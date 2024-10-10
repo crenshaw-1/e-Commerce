@@ -3,13 +3,13 @@ const morgan = require('morgan');
 const colors = require('colors');
 const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
-
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const cors = require('cors');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
-require('dotenv').config()
+require('dotenv').config();
 
 connectDB();
 
@@ -17,6 +17,20 @@ const products = require('./routes/product.routes');
 const users = require('./routes/user.routes');
 
 const app = express();
+
+const corsOptions = {
+  origin: [
+    'http://localhost:5173',  
+    'http://localhost:3000',
+    'https://5173-crenshaw1-ecommerce-f368xunkclu.ws-eu116.gitpod.io',
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, 
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
@@ -33,7 +47,6 @@ const limiter = rateLimit({
   max: 100
 });
 app.use(limiter);
-
 
 app.use('/api/v1/products', products);
 app.use('/api/v1/users', users);

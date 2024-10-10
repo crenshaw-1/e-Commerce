@@ -24,7 +24,7 @@ exports.getProducts = asyncHandler(async (req, res, next) => {
     .skip(startIndex)
     .limit(limit)
     .sort(req.query.sort ? { price: req.query.sort === 'price_asc' ? 1 : -1 } : { createdAt: -1 });
-
+  
   const pagination = {};
 
   if (endIndex < total) {
